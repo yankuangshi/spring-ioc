@@ -1,0 +1,17 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+    <!-- 声明userDao，交给spring创建 -->
+    <bean name="userDao" class="com.kyan.springioc.dao.impl.UserDaoImpl"/>
+    <!-- 声明userService对象，交给spring创建 -->
+    <bean name="userService" class="com.kyan.springioc.service.impl.UserServiceImpl">
+        <!-- 注入userDao对象,需要setter方法-->
+        <property name="userDao" ref="userDao"/>
+    </bean>
+    <!-- 使用注解时必须启动注解驱动 -->
+    <context:annotation-config/>
+    <bean name="orderDao" class="com.kyan.springioc.dao.impl.OrderDaoImpl"/>
+    <bean name="orderService" class="com.kyan.springioc.service.impl.OrderServiceimpl"/>
+
+</beans>

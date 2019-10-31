@@ -1,0 +1,14 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        ">
+    <!-- 声明userAccountDao，交给spring创建 -->
+    <bean name="userAccountDao" class="com.kyan.springioc.dao.impl.UserAccountDaoImpl"/>
+    <!-- 声明userAccountService对象，交给spring创建 -->
+    <bean name="userAccountService" class="com.kyan.springioc.service.impl.UserAccountServiceImpl">
+        <!-- 注入userAccountDao对象，需要构造器方法-->
+        <constructor-arg ref="userAccountDao"/>
+    </bean>
+
+</beans>
