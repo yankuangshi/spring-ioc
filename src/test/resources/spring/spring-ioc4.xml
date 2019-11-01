@@ -1,0 +1,13 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- 静态工厂创建，调用静态方法getUser -->
+    <bean id="user1" class="com.kyan.springioc.pojo.PojoFactory" factory-method="getUser"/>
+
+    <!-- 工厂实例创建，先创建工厂类，再调用方法getUser2 -->
+    <bean id="factory" class="com.kyan.springioc.pojo.PojoFactory"/>
+    <bean id="user2" factory-bean="factory" factory-method="getUser2"/>
+
+</beans>
